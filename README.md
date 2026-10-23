@@ -36,30 +36,31 @@ composer require larva/laravel-ai-volc
 
     'volc' => [
         'driver' => 'volc',
-        'key' => env('VOLC_API_KEY'),
-        'url' => env('VOLC_URL', 'https://ark.cn-beijing.volces.com/api/v3'),
+        'key' => env('VOLC_ARK_KEY'),
+        'url' => env('VOLC_ARK_URL', 'https://ark.cn-beijing.volces.com/api/v3'),
 
         // 可选：默认模型与网关参数
         'models' => [
             'text' => [
-                'default' => 'doubao-seed-2-0-pro-260615',  // 默认文本模型
+                'default' => env('VOLC_TEXT_MODEL', 'doubao-seed-2-1-lite-260915'), // 默认文本模型
             ],
             'embeddings' => [
-                'default' => 'doubao-embedding-large',      // 默认向量模型
+                'default' => env('VOLC_EMBEDDINGS_MODEL', 'doubao-embedding-vision-251215'), // 默认向量模型
+                'dimensions' => env('VOLC_EMBEDDINGS_DIMENSIONS', 2048), // 向量维度：支持传入dimensions参数降维1024使用
             ],
             'audio' => [
-                'default' => 'doubao-seed-tts-2.0',   // 默认 TTS 模型
-                'voice' => 'zh_female_gaolengyujie_uranus_bigtts', // 默认女声
-                'male_voice' => 'zh_male_qingshuangnanda_mars_bigtts', // 默认男声
-                'response_format' => 'mp3',           // mp3 / wav / pcm / ogg_opus
-                'speed' => 1.0,                       // 语速 0.5 ~ 2.0
+                'default' => env('VOLC_AUDIO_MODEL', 'doubao-seed-tts-2.0'),   // 默认 TTS 模型
+                'voice' => env('VOLC_AUDIO_VOICE', 'zh_female_gaolengyujie_uranus_bigtts'), // 默认女声
+                'male_voice' => env('VOLC_AUDIO_MALE_VOICE', 'zh_male_qingshuangnanda_mars_bigtts'), // 默认男声
+                'response_format' => env('VOLC_AUDIO_RESPONSE_FORMAT', 'mp3'), // mp3 / wav / pcm / ogg_opus
+                'speed' => env('VOLC_AUDIO_SPEED', 1.0), // 语速 0.5 ~ 2.0
             ],
             'image' => [
-                'default' => 'doubao-seedream-5-0-pro-260628', // 默认图像模型
-                'watermark' => false,                 // 是否添加水印
+                'default' => env('VOLC_IMAGE_MODEL', 'doubao-seedream-5-0-pro-260628'), // 默认图像模型
+                'watermark' => false, // 是否添加水印
             ],
             'video' => [
-                'default' => 'doubao-seedance-2-5-260628',   // 默认视频模型
+                'default' => env('VOLC_VIDEO_MODEL', 'doubao-seedance-2-5-260628'), // 默认视频模型
             ],
         ],
     ],
@@ -69,8 +70,8 @@ composer require larva/laravel-ai-volc
 `.env`：
 
 ```dotenv
-VOLC_API_KEY=your-ark-api-key
-VOLC_URL=https://ark.cn-beijing.volces.com/api/v3
+VOLC_ARK_KEY=your-ark-api-key
+VOLC_ARK_URL=https://ark.cn-beijing.volces.com/api/v3
 ```
 
 如需将火山方舟设为默认提供方：
@@ -204,7 +205,7 @@ composer fix-style     # 自动修复代码风格
 
 ## 安全
 
-如发现安全漏洞，请联系：<support@larva.com.cn>，请勿在公开 Issue 中披露。
+如发现安全漏洞，请联系：<xutongle@msn.com>，请勿在公开 Issue 中披露。
 
 ## 许可证
 
