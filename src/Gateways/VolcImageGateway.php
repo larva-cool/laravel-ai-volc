@@ -75,7 +75,7 @@ class VolcImageGateway implements ImageGateway
 
         $response = $this->withErrorHandling(
             $provider->name(),
-            fn (): Response => $this->client($provider, $timeout ?? 120)->post('images/generations', array_filter([
+            fn (): Response => $this->client($provider, $timeout ?? 300)->post('images/generations', array_filter([
                 'model' => $model,
                 'prompt' => $prompt,
                 ...$provider->defaultImageOptions($size, $quality),

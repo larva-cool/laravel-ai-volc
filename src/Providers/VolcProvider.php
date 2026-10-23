@@ -191,7 +191,7 @@ class VolcProvider extends OpenAiCompatibleProvider implements AudioProvider, Im
     {
         return Http::baseUrl($this->baseUrl())
             ->withToken($this->config['key'])
-            ->timeout($timeout ?? 60)
+            ->timeout($timeout ?? 300)
             ->throw();
     }
 

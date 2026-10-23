@@ -42,7 +42,7 @@ class VolcAudioGateway implements AudioGateway
         string $text,
         string $voice,
         ?string $instructions = null,
-        int $timeout = 30,
+        int $timeout = 300,
     ): AudioResponse {
         /** @var array{voice?: string, male_voice?: string, response_format?: string, speed?: float} $config */
         $config = $provider->additionalConfiguration()['models']['audio'] ?? [];
