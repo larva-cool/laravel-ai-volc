@@ -45,7 +45,7 @@ trait CreatesVolcClient
             rtrim((string) $url, '/'),
             filled($key) ? ['Authorization' => 'Bearer '.$key] : [],
             $config['headers'] ?? [],
-            $timeout ?? 60,
+            $timeout ?? 300,
         );
     }
 }
